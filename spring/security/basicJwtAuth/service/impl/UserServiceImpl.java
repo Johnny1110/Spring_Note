@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
             user.setExpired(false);
             user.setLocked(false);
             user.setUsername("Johnny");
-            user.setPassword("Jarvan1110");
+            user.setPassword("letmein");
             List<SysRole> roles = new ArrayList<>();
             roles.add(role);
             user.setRoles(roles);

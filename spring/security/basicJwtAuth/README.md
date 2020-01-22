@@ -14,6 +14,8 @@
 
 二. [後端實作](#2)
 
+三. [實際測試](#3)
+
 <br>
 
 ---
@@ -21,7 +23,7 @@
 
 <tag id="1"/>
 
-### 一. 認識 JWT (JSON Web Token)
+## 一. 認識 JWT (JSON Web Token)
 
 1. 使用 JWT 進行認證的流程如下圖: (圖片取自官方:https://jwt.io/introduction/)
 
@@ -84,7 +86,7 @@
 
 <tag id="2"/>
 
-### 二. 後端實作
+## 二. 後端實作
 
 <br>
 
@@ -366,4 +368,60 @@
                 return null;
             }
             ```
+
+    <br><br><br>
+
+    7.  Controller 部份
+
+        * Controller 部份就很隨意了，直接看 code : 
+
+        ```java
+        @RestController
+        public class NormalController {
+            @PreAuthorize("hasAuthority('ADMIN')") // 只有 ADMIN 才進得來
+            @RequestMapping("/sayHello")
+            public String forwardToIndex(){
+                Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+                String username = authentication.getName();
+                System.out.println(username);
+                authentication.getAuthorities().forEach(System.out::println);
+                return username;
+            }
+        }
+        ```
+
+<br><br><br>
+
+---
+
+<br>
+
+## 三. 實際測試
+
+* 為了方便，我這邊直接用 python 發請求給 server。
+
+    1. post : "http://localhost:8080/login"
+
+        帶上 post 資料
+
+        ```python
+        post_data = {
+            'username': 'Johnny'
+            'password': 'letmein'
+        }
+        ```
+
+        然後會取得 response，把 token 資訊放到 header 的 dicts 中。
+
+        ```python
+        header = {
+            'Authorization': 'the token'
+        }
+        ```
+
+        <br>
+
+    2.  get : "http://localhost:3000/sayHello"
+
+        帶上 header 資訊，結果可以得到 server 回傳的 username : Johnny
 
