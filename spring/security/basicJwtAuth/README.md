@@ -347,3 +347,23 @@
 
         * getAuthentication() 用來取出 request header 中的 token 資訊，解析後包裝成一個 Authentication 物件再回傳。
 
+            ```java
+            public static Authentication getAuthentication(HttpServletRequest request) {
+                String token = request.getHeader(HEADER_STRING);
+                if (token != null){
+                    try{
+                        Claims claims = Jwts.parser()
+                                .setSigningKey(key)
+                                .parseClaimsJws(token)
+                                .getBody();
+                        String user = claims.getSubject();
+                        List<GrantedAuthority> authorities = generateGrantedAuthorityList(claims.get("authorize"));
+                        return user != null ? new UsernamePasswordAuthenticationToken(user, null, authorities) : null;
+                    }catch (JwtException ex){
+                        System.out.println(ex);
+                    }
+                }
+                return null;
+            }
+            ```
+

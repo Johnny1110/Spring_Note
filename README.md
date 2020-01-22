@@ -12,6 +12,6 @@
 
 ## 目錄
 
-1.  [Spring Security](./security)
+1.  [Spring Security](./spring/security)
 
-2. [Spring Web](./web)
+2. [Spring Web](./spring/web)
