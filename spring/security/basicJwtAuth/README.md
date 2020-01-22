@@ -423,7 +423,7 @@
 
         <br>
 
-    2.  get : "http://localhost:3000/sayHello"
+    2.  get : "http://localhost:8080/sayHello"
 
         帶上 header 資訊，結果可以得到 server 回傳的 username : Johnny
 
