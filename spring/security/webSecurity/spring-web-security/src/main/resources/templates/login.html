@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="UTF-8">
+    <title>登入頁</title>
+    <link rel="shortcut icon" th:href="@{/favicon.ico}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <script th:src="@{/js/jquery-3.4.1.js}"></script>
+    <script th:src="@{/js/bootstrap.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+</head>
+<body>
+<header th:include="/components/header"></header>
+
+     <!-- 登入Div -->
+     <div id="logInContent">
+         <div id="logInTitle" class="mb-3">
+             <h4>登入頁</h4>
+         </div>
+         <div id="logInLogo">
+             <img th:src="@{/images/logo.png}">
+         </div>
+         <div class="divCenter">
+             <p th:if="${param.error}" class="bg-danger">帳號或密碼有錯誤，請重試。</p>
+             <form name="form" th:action="@{/login}" action="/login" method="post">
+                 <div class="input-group mb-3">
+                     <div class="input-group-prepend">
+                         <span class="input-group-text" id="account">帳號</span>
+                     </div>
+                     <input type="text" class="form-control" placeholder="請輸入帳號" aria-label="
+                    account" aria-describedby="account" name="username">
+                 </div>
+                 <div class="input-group mb-3">
+                     <div class="input-group-prepend">
+                         <span class="input-group-text" id="passWord">密碼</span>
+                     </div>
+                     <input type="password" class="form-control" placeholder="請輸入密碼" aria-label="passWord"
+                            aria-describedby="passWord" name="password">
+                 </div>
+                 <input class="btn btn-primary" type="submit" value="登入" id="logInBtn">
+             </form>
+         </div>
+     </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

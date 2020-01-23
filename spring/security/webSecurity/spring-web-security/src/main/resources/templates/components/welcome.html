@@ -1,0 +1,26 @@
+<div id="login-message">
+    <h3> 您已經成功登入了測試應用</h3>
+
+    <hr/>
+
+    <div>
+        歡迎 <span th:text="${name}"></span> 回來!!!!
+    </div>
+
+    <hr/>
+
+    <div>
+        <label>您的權限等級 : </label>
+        <ul th:each="auth : ${auths}">
+            <li th:text="${auth}" style="list-style: none;"></li>
+        </ul>
+    </div>
+</div>
+
+<style>
+    #login-message{
+        text-align: center;
+        justify-content: center;
+        margin-top: 10px;
+    }
+</style>

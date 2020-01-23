@@ -1,0 +1,15 @@
+<!-- 頂 -->
+<div id="top">
+    <div sec:authorize="isAuthenticated()" id="goHome">
+        <span><a th:href="@{/index}">回首頁</a></span>
+    </div>
+
+
+    Spring Web Security 測試
+
+
+
+    <div sec:authorize="isAuthenticated()" id="logout">
+        <button type="button" class="btn btn-primary" onclick="logout()">登出</button>
+    </div>
+</div>

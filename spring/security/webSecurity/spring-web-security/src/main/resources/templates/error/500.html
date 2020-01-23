@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Nopain-CRM 伺服器錯誤</title>
+    <link rel="shortcut icon" th:href="@{/favicon.ico}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <script th:src="@{/js/jquery-3.4.1.js}"></script>
+    <script th:src="@{/js/bootstrap.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+</head>
+
+<body onload="redirectToIndexIn5Sec()">
+
+<header th:include="/components/header"></header>
+
+<section>
+    <h3>抱歉，伺服器出現問題，請回報管理員檢修，既將在 5 秒後反回首頁。</h3>
+    <p th:text="${errorMsg}"></p>
+</section>
+
+<footer th:include="/components/footer"></footer>
+
+</body>
+</html>

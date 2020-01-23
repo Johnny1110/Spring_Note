@@ -1,0 +1,148 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Microsoft JhengHei;
+    background-color: #fff9d4;
+}
+
+#container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+#top {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    background-color: #ECEBEE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+}
+
+#logout{
+    position: absolute;
+    left: 95%;
+}
+
+#goHome{
+    position: absolute;
+    left: 5%;
+}
+
+/* 以下為登入區塊CSS */
+
+#logInContent {
+    position: relative;
+    height: 75vh;
+    width: 40vw;
+    left: 30vw;
+    top: 30px;
+    background-color: #ffffff;
+    /* display: none; */
+}
+
+#logInTitle {
+    position: relative;
+    text-align: center;
+}
+
+.divCenter {
+    position: relative;
+    width: 80%;
+    left: 10%;
+    top: 30px;
+}
+
+#logInLogo {
+    position: relative;
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    border-radius: 50px;
+}
+
+#logInLogo img {
+    width: 100%;
+    height: 100%;
+}
+
+#logInBtn{
+    position: relative;
+    top: 10vh;
+}
+
+/* 以上為登入區塊CSS */
+
+/* 以下為主要畫面CSS */
+
+#mainContent{
+    position: relative;
+    width: 100%;
+    height: 90vh;
+}
+
+/* 以下左側function列 */
+#functionList{
+    position: absolute;
+    width: 20vw;
+    height: 90vh;
+    top: 5px;
+    background-color: #C9BDCD;
+    border: 1px solid #bbb;
+}
+
+#functionPosition{
+    position: relative;
+    width: 80%;
+    top: 5%;
+    left: 10%;
+    font-size: 20px;
+    text-align: center;
+
+}
+
+.divBottomLine{
+    border-bottom: 1px solid #111;
+}
+/* 以上左側function列 */
+
+#popArea{
+    position: absolute;
+    left: 20vw;
+    width: 80vw;
+    height: 90vh;
+    top: 5px;
+}
+
+#addCustomer{
+    position: relative;
+    left: 75px;
+    top: 25px;
+    height: 480px;
+    width: 370px;
+    background-color: #FFFCEB;
+    border: 1px solid #999;
+}
+
+.paddingPosition{
+    position: relative;
+    width: 90%;
+    left: 5%;
+}
+
+#searchCustomer{
+    position: relative;
+    left: 75px;
+    top: 25px;
+    height: 480px;
+    width: 500px;
+    background-color: #FFFCEB;
+    border: 1px solid #999;
+}
+
+
+/* 以上為主要畫面CSS */
