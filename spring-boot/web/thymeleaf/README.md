@@ -145,10 +145,8 @@
         ```html
         <!DOCTYPE html>
         <html xmlns:th="http://www.thymeleaf.org"
-              xmlns:th="http://www.thymeleaf.org"
               xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
-              xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
-              layout:decorator="layout/layout">
+              xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
         ```
 
         <br/>
