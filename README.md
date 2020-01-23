@@ -10,6 +10,6 @@
 
 ## 分類
 
-* ### 一. Spring Boot  [（傳送們）](./spring-boot)
+* ### 一. Spring Boot  [（傳送門）](./spring-boot)
 
-* ### 二. Spring [（傳送們）](./spring/README.md)
+* ### 二. Spring [（傳送門）](./spring/README.md)

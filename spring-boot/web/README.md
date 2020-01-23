@@ -15,4 +15,4 @@
 
 2. [Vue.js 前後端分離的 router mode : history](./vueRouterMode)
 
-3. []()
+3. [配置 Thymeleaf 模板（含 spring security tag）](./thymeleaf/README.md)
