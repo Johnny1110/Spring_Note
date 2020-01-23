@@ -396,6 +396,8 @@
 
 <br>
 
+<div id="3"></div>
+
 ## 三. 實際測試
 
 * 為了方便，我這邊直接用 python 發請求給 server。
@@ -421,7 +423,7 @@
 
         <br>
 
-    2.  get : "http://localhost:3000/sayHello"
+    2.  get : "http://localhost:8080/sayHello"
 
         帶上 header 資訊，結果可以得到 server 回傳的 username : Johnny
 
