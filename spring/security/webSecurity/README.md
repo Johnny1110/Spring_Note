@@ -370,21 +370,20 @@
 
     1. 一般 USER
 
-        <form>
-        <label>帳號<label>
-        <input type="text" value="user" readonly>
+        
+        * 帳號：user
+        
+        * 密碼：user
 
-        <label>密碼<label>
-        <input type="text" value="user" readonly>
+    <br/>
 
     1. 管理員 ADMIN
 
-        <form>
-        <label>帳號<label>
-        <input type="text" value="admin" readonly>
+
+        * 帳號：admin
+
+        * 密碼：admin
         
-        <label>密碼<label>
-        <input type="text" value="admin" readonly>
 
 
 
