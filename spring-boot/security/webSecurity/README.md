@@ -6,6 +6,8 @@
 
 建置涉及到 spring security 標準介面 UserDetails 與 UserDetailsService。
 
+<strong>因為使用 Thymeleaf 模板的 conponent 功能，所以這個應用只能打包成 war 檔並部屬到 Tomcat 9 以上的 Server </strong>
+
 <br>
 
 ---
@@ -31,13 +33,17 @@
 
 一.  [pom.xml 依賴重點整理](#pom)
 
-二.  [配置文件 WebSecurityConfig](#config)
+二.  [MainClass : WebSecurityApplication](#app)
 
-三.  [自訂 User 資料來源](#user)
+三.  [配置文件 WebSecurityConfig](#config)
 
-四.  [Controller 以及模板設計](#controller)
+四.  [自訂 User 資料來源](#user)
 
-五.  [結語](#ending)
+五.  [Controller 以及模板設計](#controller)
+
+六.  [application.yml](#yml)
+
+七.  [結語](#ending)
 
 <br><br>
 
@@ -94,12 +100,38 @@
 ---
 
 <br><br>
+
+<div id="app">
+
+### 二. MainClass : WebSecurityApplication [（看完整）](./spring-web-security/src/main/java/com/frizo/note/spring/web/security/WebSecurityApplication.java)
+
+* code example : 
+    ```java
+    @SpringBootApplication
+    public class WebSecurityApplication extends SpringBootServletInitializer {
+        public static void main(String[] args) {
+            SpringApplication.run(WebSecurityApplication.class, args);
+        }
+
+        // 要想包成 war 部屬到 tomcat 上，就必須複寫 SpringBootServletInitializer 的此方法
+        @Override
+        protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+            return application.sources(WebSecurityApplication.class);
+        }
+    }
+    ```
+
+<br><br>
+
+---
+
+<br><br>
     
 
 <div id="config"></div>
 
 
-### 二. 配置文件 WebSecurityConfig [（看完整）](./spring-web-security/src/main/java/com/frizo/note/spring/web/security/config/WebSecurityConfig.java)
+### 三. 配置文件 WebSecurityConfig [（看完整）](./spring-web-security/src/main/java/com/frizo/note/spring/web/security/config/WebSecurityConfig.java)
 
 *   SpringWebSecurityConfig 繼承 WebSecurityConfigurerAdapter 並且使用類註解 @Configuration 這邊複寫其父類的 3 個核心方法用來定義本安全應用。
 
@@ -189,7 +221,7 @@
 
 <div id="user">
 
-### 三. 自訂 User 資料來源
+### 四. 自訂 User 資料來源
 
 
 * 要想自行定義系統 User 資料來源，需要實作 Spring Security 提供 2 個組介面 :
@@ -285,7 +317,7 @@
 
 <div id="controller"></div>
 
-### 四. Controller 以及模板設計
+### 五. Controller 以及模板設計
 
 * 其實到這邊為止，一個基本的 Spring Security 應用已經配置完成了，剩下的就是編寫 Controller 與設計登入主頁的模板了。
 
@@ -357,14 +389,60 @@
 <br>
 <br>
 
+<div id="yml"></div>
+
+### 六. application.yml [（看完整）](./spring-web-security/src/main/resources/config/application.yml)
+
+* application.yml 配置信息
+
+    ```yml
+    # spring 配置
+    spring:
+    devtools:
+        restart:
+        enabled: true
+
+    ## thymeleaf 模板資源必須如此配置才可以支援部屬 war
+    thymeleaf:
+        prefix: classpath:templates/
+        suffix: .html
+        cache: false
+        enabled: true
+        encoding: UTF-8
+        mode: LEGACYHTML5
+
+    ## 靜態資源必須如此配置才可以支援部屬 war
+    resources:
+        static-locations: classpath:static/
+        cache:
+        cachecontrol:
+            no-cache: true
+
+
+    # tomcat 配置
+    server:
+    port: 8080
+    servlet:
+        context-path: /security
+    ```
+
+<br>
+<br>
+
+---
+
+<br>
+<br>
+
 <div id="ending"></div>
 
-### 五. 結語
+### 七. 結語
 
 * 以上就是所有的配置信息，如有需要可以整份專案抓下來部屬執行看看。
 
+* 經過實際測試暫時無法打包成 jar 檔執行，因為 jar 檔無法解析 Thymeleaf 模板 component 路徑。經過修改一點點專案結構後就可以部屬成 war 檔到 tomcat 9 以上的 Server 運行。
     
-* cmd 模式進到 spring-web-security 資料夾後執行 mvn spring-boot:run 指令，然後連到 localhost:8080 查看。
+* cmd 模式進到 spring-web-security 資料夾後執行 mvn spring-boot:run 指令，然後連到 localhost:8080/security 查看。
 
     預設提供 2 組帳號測試：
 

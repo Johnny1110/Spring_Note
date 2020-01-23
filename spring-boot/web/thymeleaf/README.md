@@ -20,6 +20,12 @@
 
 <br>
 
+<strong>因為使用 Thymeleaf 模板的 conponent 功能，所以這個應用只能打包成 war 檔並部屬到 Tomcat 9 以上的 Server </strong>
+
+* 關於如何將 spring boot 應用部屬到 Tomcat Server 上，則請參閱另一篇筆記 -[部屬 war 檔](../war2tomcat/README.md)-
+
+<br>
+
 ----------
 
 <br>
@@ -28,9 +34,11 @@
 
 * ### 一. [pom.xml 配置及依賴](#pom)
 
-* ### 二. [Thymeleaf 的進階設計技巧（layout components）](#thymeleaf)
+* ### 二. [application.yml 配置](#yml)
 
-* ### 三. [Controller 設計](#controller)
+* ### 三. [Thymeleaf 的進階設計技巧（layout components）](#thymeleaf)
+
+* ### 四. [Controller 設計](#controller)
 
 <br>
 
@@ -44,7 +52,8 @@
 
 <div id="pom"></div>
 
-### 一. pom.xml 配置及依賴
+### 一. pom.xml 配置及依賴[（看完整）](../../security/webSecurity/spring-web-security/pom.xml)
+
 
 * pom 的重要依賴 :
 
@@ -104,11 +113,56 @@
 
 ---
 
+<br>
+
+<div id="yml"></div>
+
+### 二. application.yml 配置[（看完整）](../../security/webSecurity/spring-web-security/src/main/resources/config/application.yml)
+
+* code example :
+
+    ```yml
+    # spring 配置
+    spring:
+    devtools:
+        restart:
+        enabled: true
+
+    ## thymeleaf 模板資源必須如此配置才可以支援部屬 war
+    thymeleaf:
+        prefix: classpath:templates/
+        suffix: .html
+        cache: false
+        enabled: true
+        encoding: UTF-8
+        mode: LEGACYHTML5
+
+    ## 靜態資源必須如此配置才可以支援部屬 war
+    resources:
+        static-locations: classpath:static/
+        cache:
+        cachecontrol:
+            no-cache: true
+
+
+
+    # tomcat 配置
+    server:
+    port: 8080
+    servlet:
+        context-path: /security
+    ```
+
+
+<br/><br/>
+
+---
+
 <br/><br/>
 
 <div id="thymeleaf">
 
-## 二. Thymeleaf 的進階設計技巧（layout components）
+## 三. Thymeleaf 的進階設計技巧（layout components）
 
 * spring boot 預設的靜態資源存放路徑為 : 
 
@@ -316,7 +370,7 @@
 
 <div id="controller">
 
-### 三. Controller 設計 [（看完整）](../../security/webSecurity/spring-web-security/src/main/java/com/frizo/note/spring/web/security/controller/BaseController.java)
+### 四. Controller 設計 [（看完整）](../../security/webSecurity/spring-web-security/src/main/java/com/frizo/note/spring/web/security/controller/BaseController.java)
 
 * Controller Example : 
 

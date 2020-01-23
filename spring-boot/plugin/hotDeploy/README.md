@@ -82,23 +82,29 @@
     ```yml
     # spring 配置
     spring:
-
-    ## 熱部屬配置
     devtools:
         restart:
         enabled: true
 
-    ## thymeleaf 模板資源必須如此配置才可以支援 spring boot devtools 熱部屬
+    ## thymeleaf 模板資源必須如此配置才可以支援部屬 war
     thymeleaf:
-        prefix: file:src/main/resources/templates/
+        prefix: classpath:templates/
+        suffix: .html
         cache: false
         enabled: true
         encoding: UTF-8
+        mode: LEGACYHTML5
 
-    ## 靜態資源必須如此配置才可以支援 spring boot devtools 熱部屬
+    ## 靜態資源必須如此配置才可以支援部屬 war
     resources:
-        static-locations: file:src/main/resources/static/
+        static-locations: classpath:static/
         cache:
         cachecontrol:
             no-cache: true
+
+
+
+    # tomcat 配置
+    server:
+    port: 8080
     ```
