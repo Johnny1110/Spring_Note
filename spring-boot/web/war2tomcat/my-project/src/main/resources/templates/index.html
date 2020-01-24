@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <script type="text/javascript" th:src="@{/js/main.js}"></script>
+</head>
+<body>
+
+<div>
+    <h1 th:text="${message}"></h1>
+    <hr/>
+
+    <label>test main.css</label>
+    <div class="basic-css">
+        Testing 123
+    </div>
+    <hr/>
+
+    <label>test main.js</label>
+     <div>
+         <button type="button" onclick="alertHello()">say hello!!</button>
+     </div>
+
+</div>
+
+</body>
+</html>
