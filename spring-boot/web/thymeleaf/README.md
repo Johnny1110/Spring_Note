@@ -87,6 +87,13 @@
             <version>${spring.boot.version}</version>
         </dependency>
 
+        <!-- spring boot thymeleaf 自動配置依賴 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
+
         <!-- thymeleaf 依賴 -->
         <dependency>
             <groupId>org.thymeleaf</groupId>
