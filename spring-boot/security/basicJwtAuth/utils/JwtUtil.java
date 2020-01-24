@@ -18,6 +18,7 @@ import java.util.*;
 
 public class JwtUtil {
     static final long EXPIRATIONTIME = 432_000_000;     // 5天
+    static final String TOKEN_PREFIX = "Bearer";        // Token前缀
     static final String HEADER_STRING = "Authorization";// 存放Token的Header Key
     static final Key key = MacProvider.generateKey();    //給定一組密鑰，用來解密以及加密使用
 
@@ -46,7 +47,7 @@ public class JwtUtil {
             try{
                 Claims claims = Jwts.parser()
                         .setSigningKey(key)
-                        .parseClaimsJws(token)
+                        .parseClaimsJws(token.replace(TOKEN_PREFIX, ""))
                         .getBody();
                 String user = claims.getSubject();
                 List<GrantedAuthority> authorities = generateGrantedAuthorityList(claims.get("authorize"));
