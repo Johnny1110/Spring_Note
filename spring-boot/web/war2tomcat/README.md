@@ -145,7 +145,7 @@ spring boot 專案打包進 Tomcat 的筆記。
 
     main 中有 3 個資料夾，java 與 resources 就不提了。這邊要注意一下 <strong>webapp</strong> 資料夾
 
-    要想打包 maven 專案成 war 檔，就一定要有 <strong>web.xml</strong> 檔案，雖然 tomcat 用不到，但是打包期間還是需要的。web.xml 放置的位置就是 ```src/main/webapp/WEB-INF```
+    要想打包 maven 專案成 war 檔，就一定要有 <strong>web.xml</strong> 檔案，雖然 servlet 3.0 後就不太用的到了，但是打包期間還是需要有的。web.xml 放置的位置就在 ```src/main/webapp/WEB-INF```
 
     web.xml 全部內容如下 : 
 
