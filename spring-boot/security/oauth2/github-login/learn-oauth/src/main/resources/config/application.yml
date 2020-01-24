@@ -1,0 +1,20 @@
+# Tomcat Server Port
+server:
+  port: 8080
+
+# Spring Config
+spring:
+
+  # OAuth2
+  security:
+    oauth2:
+      client:
+        registration:
+          github: #github 是 registration 屬性的唯一 ID
+            client-id: 7eec64ece4a92727f2a9
+            client-secret: 59a88e42db12717a9cb5aa3e51ba8945ca50e14f
+
+  # Devtool
+  devtools:
+    restart:
+      enabled: true
