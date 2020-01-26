@@ -4,6 +4,8 @@
 
 利用 Spring Security 對 Oauth2 良好的封裝，我們可以快速的搭建一個 GitHub 快捷登入功能。
 
+實際範例上還包括　facebook 登入，由於配置方法與 github 一致，所以先不提。
+
 <br>
 
 ---

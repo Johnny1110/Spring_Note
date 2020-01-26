@@ -10,7 +10,7 @@ import java.security.Principal;
 
 @RestController
 public class SimpleController {
-    @GetMapping("/hello")
+    @GetMapping(value = {"/hello", "/"})
     public String hello(Principal principal){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         JSONObject jsonObject = new JSONObject();
