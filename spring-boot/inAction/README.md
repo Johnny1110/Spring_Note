@@ -10,5 +10,5 @@
 
 <br>
 
-1. [Restful API 線上投票系統](./polling_app/README.md)
+1. [Restful API 線上投票系統](./polling_app)
 
