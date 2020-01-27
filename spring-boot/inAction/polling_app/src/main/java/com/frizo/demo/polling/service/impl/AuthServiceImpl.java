@@ -11,6 +11,7 @@ import com.frizo.demo.polling.payload.JwtAuthenticationResponse;
 import com.frizo.demo.polling.payload.LoginRequest;
 import com.frizo.demo.polling.payload.SignUpRequest;
 import com.frizo.demo.polling.security.JwtTokenProvider;
+import com.frizo.demo.polling.security.UserPrincipal;
 import com.frizo.demo.polling.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,6 +20,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
 
@@ -40,6 +42,7 @@ public class AuthServiceImpl implements AuthService {
     private JwtTokenProvider tokenProvider;
 
     @Override
+    @Transactional
     public JwtAuthenticationResponse signin(LoginRequest req) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
@@ -49,6 +52,8 @@ public class AuthServiceImpl implements AuthService {
         );
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = tokenProvider.generateToken(authentication);
+        UserPrincipal principal = (UserPrincipal) authentication.getPrincipal();
+        userRepository.setAuthTokenById(principal.getId(), jwt);
         return new JwtAuthenticationResponse(jwt);
     }
 

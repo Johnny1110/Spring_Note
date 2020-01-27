@@ -9,8 +9,12 @@ import com.frizo.demo.polling.service.UserService;
 import com.frizo.demo.polling.service.VoteService;
 import com.frizo.demo.polling.utils.AppConstants;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api")
@@ -26,9 +30,19 @@ public class UserController {
 
 
     @GetMapping("/user/me")
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN', 'DBA')")
     public UserSummary getCurrentUser(@CurrentUser UserPrincipal currentUser) {
         return new UserSummary(currentUser.getId(), currentUser.getUsername(), currentUser.getName());
+    }
+
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN', 'DBA')")
+    @PostMapping("/user/reset/password")
+    public ResponseEntity<ApiResponse> resetPassword(@CurrentUser UserPrincipal currentUser,
+                                                     @Valid @RequestBody ResetPasswordRequest req){
+        req.setUsernameOrEmail(currentUser.getUsername());
+        req.setUserId(currentUser.getId());
+        ApiResponse response = userService.resetUserPassword(req);
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
     @GetMapping("/user/checkUsernameAvailability")

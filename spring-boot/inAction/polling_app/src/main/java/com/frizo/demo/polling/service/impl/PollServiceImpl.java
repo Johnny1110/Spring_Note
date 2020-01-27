@@ -64,12 +64,12 @@ public class PollServiceImpl implements PollService {
         Map<Long, Long> pollUserVoteMap = getPollUserVoteMap(currentUser, pollIds);
         Map<Long, User> creatorMap = getPollCreatorMap(polls.getContent());
 
-        List<PollResponse> pollResponses = polls.map(poll -> {
-            return ModelMapper.mapPollToPollResponse(poll,
+        List<PollResponse> pollResponses = polls.map(poll ->
+             ModelMapper.mapPollToPollResponse(poll,
                     choiceVoteCountMap,
                     creatorMap.get(poll.getCreatedBy()),
-                    pollUserVoteMap == null ? null : pollUserVoteMap.getOrDefault(poll.getId(), null));
-        }).getContent();
+                    pollUserVoteMap == null ? null : pollUserVoteMap.getOrDefault(poll.getId(), null))
+        ).getContent();
 
         return new PagedResponse<>(pollResponses, polls.getNumber(),
                 polls.getSize(), polls.getTotalElements(), polls.getTotalPages(), polls.isLast());
@@ -243,22 +243,20 @@ public class PollServiceImpl implements PollService {
         }
     }
 
+    // 這邊其實沒什麼意義，統計所有 poll 項目的投票選項，看大家愛選 A or B or C
     private Map<Long, Long> getChoiceVoteCountMap(List<Long> pollIds) {
-        // Retrieve Vote Counts of every Choice belonging to the given pollIds
         List<ChoiceVoteCount> votes = voteRepository.countByPollIdInGroupByChoiceId(pollIds);
-
         Map<Long, Long> choiceVotesMap = votes.stream()
                 .collect(Collectors.toMap(ChoiceVoteCount::getChoiceId, ChoiceVoteCount::getVoteCount));
-
         return choiceVotesMap;
     }
 
+
+    // 由 userId 取出他投過的票以及選擇的選項
     private Map<Long, Long> getPollUserVoteMap(UserPrincipal currentUser, List<Long> pollIds) {
-        // Retrieve Votes done by the logged in user to the given pollIds
         Map<Long, Long> pollUserVoteMap = null;
         if(currentUser != null) {
             List<Vote> userVotes = voteRepository.findByUserIdAndPollIdIn(currentUser.getId(), pollIds);
-
             pollUserVoteMap = userVotes.stream()
                     .collect(Collectors.toMap(vote -> vote.getPoll().getId(), vote -> vote.getChoice().getId()));
         }
@@ -266,7 +264,6 @@ public class PollServiceImpl implements PollService {
     }
 
     Map<Long, User> getPollCreatorMap(List<Poll> polls) {
-        // Get Poll Creator details of the given list of polls
         List<Long> creatorIds = polls.stream()
                 .map(Poll::getCreatedBy)
                 .distinct()
@@ -274,8 +271,7 @@ public class PollServiceImpl implements PollService {
 
         List<User> creators = userRepository.findByIdIn(creatorIds);
         Map<Long, User> creatorMap = creators.stream()
-                .collect(Collectors.toMap(User::getId, Function.identity()));
-
+                .collect(Collectors.toMap(User::getId, Function.identity())); //Function.identity() 取得傳入 User 的參數。
         return creatorMap;
     }
 
