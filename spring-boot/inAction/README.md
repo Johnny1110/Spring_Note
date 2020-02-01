@@ -12,3 +12,5 @@
 
 1. [Restful API 線上投票系統](./polling_app)
 
+1. [Spring Social 實現第三方登入 (fb google+ github)](./spring_social)
+
