@@ -18,6 +18,8 @@
 
 2.  [Spring Web](./web)
 
-3.  [Spring Developer Plugin](./plugin)
+3.  [Spring Mail](./mail)
 
-4.  [Spring Boot 實戰](./inAction/README.md)
+4.  [Spring Developer Plugin](./plugin)
+
+5.  [Spring Boot 實戰](./inAction/README.md)
