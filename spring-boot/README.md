@@ -22,4 +22,6 @@
 
 4.  [Spring Developer Plugin](./plugin)
 
-5.  [Spring Boot 實戰](./inAction/README.md)
+5. [Spring Event](./event)
+
+6.  [Spring Boot 實戰](./inAction/README.md)
