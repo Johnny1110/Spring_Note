@@ -24,4 +24,6 @@
 
 5. [Spring Event](./event)
 
-6.  [Spring Boot 實戰](./inAction/README.md)
+6. [Spring Log](./log)
+
+7.  [Spring Boot 實戰](./inAction/README.md)
