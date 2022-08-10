@@ -1,6 +1,6 @@
 package com.example.finalversion.task;
 
-public interface BaseTask extends Runnable {
+public interface BaseScheduleTask extends Runnable {
 
     String getCron();
 

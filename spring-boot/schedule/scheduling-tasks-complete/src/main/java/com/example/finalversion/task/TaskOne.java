@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 
 @Component
-public class TaskOne implements BaseTask {
+public class TaskOne implements BaseScheduleTask {
 
     @Autowired
     CronMapper cronMapper;
