@@ -30,4 +30,6 @@
 
 8. [Spring Log](./log)
 
+9. [Spring Rest API](./rest)
+
 
