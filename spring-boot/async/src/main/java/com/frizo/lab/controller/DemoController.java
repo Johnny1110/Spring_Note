@@ -1,6 +1,8 @@
 package com.frizo.lab.controller;
 
 import com.frizo.lab.service.AsyncService;
+import com.frizo.lab.service.DeliverOrderService;
+import com.frizo.lab.service.OrderService;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,16 +20,24 @@ public class DemoController {
     @Autowired
     private AsyncService asyncService;
 
+    @Autowired
+    private OrderService orderService;
+
     @RequestMapping(value = "/test")
     public String parseData() {
-        Future<String> future1 = asyncService.configName();
+        asyncService.configName();
         Future<String> future2 = asyncService.noConfigName();
-//        String str1 = future1.get();//阻塞
-//        String str2 = future2.get();//阻塞
-//        Map<String, String> result = new HashMap<>();
-//        result.put("asyncService.configName", str1);
-//        result.put("asyncService.noConfigName", str2);
         return new Gson().toJson("result");
+    }
+
+    @RequestMapping(value = "/deliverOrder")
+    public Map<String, Object> deliverOrder() {
+        String status = orderService.callDeliver("GM001", "MA0001");
+        Map<String, Object> result = new HashMap<>();
+        result.put("code", "00000");
+        result.put("msg", "success");
+        result.put("data", status);
+        return result;
     }
 
 }

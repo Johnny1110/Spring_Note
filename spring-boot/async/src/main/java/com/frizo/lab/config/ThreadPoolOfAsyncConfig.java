@@ -18,7 +18,7 @@ public class ThreadPoolOfAsyncConfig implements AsyncConfigurer {
 
     private static final int MAX_POLL_SIZE = 200;
 
-    private static final int QUEUE_CAPACITY = 1;
+    private static final int QUEUE_CAPACITY = 10000;
 
     private static final int KEEP_ALIVE_SECONDS = 60;
 
