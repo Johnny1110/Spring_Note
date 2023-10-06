@@ -84,7 +84,7 @@
     spring:
     devtools:
         restart:
-        enabled: true
+            enabled: true
 
     ## thymeleaf 模板資源必須如此配置才可以支援部屬 war
     thymeleaf:
