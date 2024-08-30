@@ -32,4 +32,6 @@
 
 9. [Spring Rest API](./rest)
 
+10. [Spring State Machine](./state-machine/README.md)
+
 
