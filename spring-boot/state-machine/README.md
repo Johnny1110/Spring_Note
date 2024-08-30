@@ -13,10 +13,10 @@ State:
 ```java
 public enum OrderStatus {
     // 待支付，待发货，待收货，已完成
-    WAIT_PAYMENT(1, "待支付"),
-    WAIT_DELIVER(2, "待发货"),
-    WAIT_RECEIVE(3, "待收货"),
-    FINISH(4, "已完成");
+    WAIT_PAYMENT(1, "wait payment"),
+    WAIT_DELIVER(2, "wait deliver"),
+    WAIT_RECEIVE(3, "wait receive"),
+    FINISH(4, "finish");
 
     private Integer key;
     private String desc;
