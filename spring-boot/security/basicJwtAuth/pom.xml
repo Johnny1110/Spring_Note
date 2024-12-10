@@ -9,7 +9,7 @@
     <name>Learn Spring Security</name>
 
     <properties>
-        <spring.boot.version>2.2.1.RELEASE</spring.boot.version>
+        <spring.boot.version>2.5.12</spring.boot.version>
         <jackson.version>2.10.0</jackson.version>
         <jwt.version>0.10.7</jwt.version>
         <maven.compiler.version>3.8.1</maven.compiler.version>
